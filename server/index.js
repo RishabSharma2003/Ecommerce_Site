@@ -8,10 +8,11 @@ import colors from 'colors'
 
 //utils
 import connectDB from './db/db.js'
+import userRoutes from './routes/userRoutes.js'
 
 
 dotenv.config()
-const PORT=process.env.PORT||5000
+const PORT=process.env.PORT||8000
 
 connectDB()
 const app=express()
@@ -20,8 +21,12 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(morgan('dev'))
 
+// app.get('/',(req,res)=>{
+//     res.send("hello")
+// })
+app.use('/api/users',userRoutes)
 
 app.listen(PORT,()=>{
-    console.log(`running on port ${PORT}`.bgCyan.white)
+    console.log(`running on port ${PORT}`.yellow.bgBrightGreen)
 })
 
