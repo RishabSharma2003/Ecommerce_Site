@@ -9,6 +9,7 @@ import colors from 'colors'
 //utils
 import connectDB from './db/db.js'
 import userRoutes from './routes/userRoutes.js'
+import asyncErrorHandler from './error/asyncErrorHandler.js'
 
 
 dotenv.config()
@@ -25,6 +26,9 @@ app.use(morgan('dev'))
 //     res.send("hello")
 // })
 app.use('/api/users',userRoutes)
+
+// Global error handling middleware
+app.use(asyncErrorHandler);
 
 app.listen(PORT,()=>{
     console.log(`running on port ${PORT}`.yellow.bgBrightGreen)
