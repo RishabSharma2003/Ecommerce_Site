@@ -6,11 +6,10 @@ const Main = () => {
   return (
     <div>
       <Navigation/>
-      djbhd
       <main className='py-3'>
         <Outlet/>
       </main>
-    </div>
+    </div> 
   )
 }
 
